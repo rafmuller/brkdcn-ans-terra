@@ -1,0 +1,7 @@
+---
+all:
+  children:
+    mynetwork:
+      hosts:
+        fabric1:
+          ansible_host: 10.0.226.41

@@ -1,0 +1,4 @@
+---
+ansible_connection: local
+username: '{{ lookup("env", "APIC_USERNAME") }}'
+password: '{{ lookup("env", "APIC_PASSWORD") }}'

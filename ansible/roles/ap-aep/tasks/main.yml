@@ -1,0 +1,49 @@
+---
+# tasks file for roles/ap-vlans
+
+- name: Create Attacheable Entity Profile (infra:AttEntityP, infra:ProvAcc)
+  cisco.aci.aci_aep:
+    aep: "{{item.aep_name}}"
+    description: "{{item.aep_description}}"
+    infra_vlan: "{{item.aep_infra_vlan}}"
+    state: present
+  delegate_to: localhost
+  when: aeps is defined
+  loop: "{{aeps}}"
+  tags:
+    - never
+    - create
+
+- name: debug
+  ansible.builtin.debug:
+    msg: "{{item}}"
+  loop: "{{aeps}}"
+  when: aep is defined
+  tags:
+    - never
+    - create
+
+- name: Delete Attacheable Entity Profile (infra:AttEntityP, infra:ProvAcc)
+  cisco.aci.aci_aep:
+    aep: "{{item.aep_name}}"
+    description: "{{item.aep_description}}"
+    infra_vlan: "{{item.aep_infra_vlan}}"
+    state: absent
+  delegate_to: localhost
+  when: aeps is defined
+  loop: "{{aeps}}"
+  tags:
+    - never
+    - delete
+
+- name: Bind the VLAN pool specific to the AEP (infra:RsDomP)
+  cisco.aci.aci_aep_to_domain: &binding_present
+    aep: "{{item.aep_name}}"
+    domain: "{{item.domain_name}}"
+    domain_type: "{{item.domain_type}}"
+    state: present
+  delegate_to: localhost
+  loop: "{{aeps}}"
+  when: aeps is defined
+  tags:
+    - create

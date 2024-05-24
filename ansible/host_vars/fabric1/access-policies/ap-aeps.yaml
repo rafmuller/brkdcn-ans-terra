@@ -1,0 +1,23 @@
+---
+aeps:
+  - {
+      aep_name: "cl_ans_aep_mgmt",
+      aep_description: "(Ans)cl_ans_aep1_mgmt",
+      aep_infra_vlan: false,
+      domain_name: "cl_ans_aep_mgmt",
+      domain_type: "phys",
+    }
+  - {
+      aep_name: "cl_ans_aep_vm_rack1",
+      aep_description: "(Ans)cl_ans_aep_vm_rack1",
+      aep_infra_vlan: false,
+      domain_name: "cl_ans_vm_rack1",
+      domain_type: "phys",
+    }
+  - {
+      aep_name: "cl_ans_aep_l3out",
+      aep_description: "(Ans)cl_ans_aep_l3out",
+      aep_infra_vlan: false,
+      domain_name: "cl_ans_l3out",
+      domain_type: "l3dom",
+    }

@@ -1,0 +1,14 @@
+---
+domains:
+  - {
+      domain_name: "cl_ans_l3out",
+      domain_type: "l3dom",
+      vlan_pool: "cl_ans_l3out",
+      vlan_pool_allocation_mode: "static",
+    }
+  - {
+      domain_name: "cl_ans_vmrack1",
+      domain_type: "phys",
+      vlan_pool: "cl_ans_vmrack1",
+      vlan_pool_allocation_mode: "static",
+    }
