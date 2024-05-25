@@ -1,0 +1,18 @@
+---
+vlan_pools:
+  - {
+      vlan_pool_name: "cl_ans_dmz",
+      vlan_pool_description: "(Ans) DMZ Hosts VLAN Pool",
+      vlan_pool_mode: "static",
+      state: "present",
+    }
+  - {
+      vlan_pool_name: "cl_ans_mgmt",
+      vlan_pool_description: "(Ans) Management VLAN Pool",
+      vlan_pool_mode: "static",
+      state: "present",
+    }
+
+vlan_block_ranges:
+  - { start: 200, end: 299, vlan_pool_name: "cl_ans_dmz", state: "present" }
+  - { start: 300, end: 399, vlan_pool_name: "cl_ans_mgmt", state: "present" }
