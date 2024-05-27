@@ -1,2 +1,10 @@
 ---
 # tasks file for roles/tn-tenant
+- name: Create tenant (fv:Tenant)
+  cisco.aci.aci_tenant:
+    tenant: "{{item.tenant}}"
+    description: "{{item.description}}"
+    state: "{{item.state}}"
+  delegate_to: localhost
+  when: tenants is defined
+  loop: "{{tenants}}"

@@ -1,5 +1,5 @@
 ---
-- name: Create access policies for fabric1
+- name: Create tenant policies for fabric1
   hosts: fabric1
   gather_facts: false
   connection: local
@@ -13,6 +13,7 @@
       use_ssl: yes
 
   roles:
-    - roles/vlans
-    - roles/ap-domains
-    - roles/ap-aep
+    - roles/tn-tenant
+    - roles/tn-vrf
+    - roles/tn-bd
+    - roles/tn-epg

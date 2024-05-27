@@ -22,7 +22,7 @@ To create a virtual environment for the project run:
 pyenv virtualenv 3.10 cisco-live
 ```
 
-THen on the root directory for the ansible repository run:
+Then on the root directory for the ansible repository run:
 
 ```bash
 pyenv local cisco-live

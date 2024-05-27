@@ -1,0 +1,11 @@
+---
+# tasks file for roles/tn-ap
+- name: Create App Profile (fv:Ap)
+  cisco.aci.aci_ap:
+    tenant: "{{ item.tenant }}"
+    ap: "{{item.ap}}"
+    description: "{{item.description}}"
+    state: "{{item.state}}"
+  delegate_to: localhost
+  when: app_profiles is defined
+  loop: "{{app_profiles}}"

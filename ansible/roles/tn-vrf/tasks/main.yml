@@ -1,2 +1,14 @@
 ---
 # tasks file for roles/tn-vrf
+- name: Create VRF (fv:Ctx)
+  cisco.aci.aci_vrf:
+    vrf: "{{item.vrf_name}}"
+    tenant: "{{item.tenant}}"
+    descr: "{{item.description}}"
+    policy_control_preference: "{{item.policy_control_preference}}"
+    policy_control_direction: "{{item.policy_control_direction}}"
+    match_type: "{{item.match_type}}"
+    state: "{{item.state}}"
+  delegate_to: localhost
+  loop: "{{vrfs}}"
+  when: vrfs is defined

@@ -1,0 +1,22 @@
+---
+# tasks file for roles/tn-bd
+- name: Add Bridge Domain (fv:BD)
+  cisco.aci.aci_bd:
+    tenant: "{{ item.tenant }}"
+    bd: "{{item.bd}}"
+    bd_type: "{{item.bd_type}}"
+    description: "{{item.description}}"
+    mac_address: "{{item.mac_address}}"
+    vrf: "{{item.vrf}}"
+    l2_unknown_unicast: "{{item.l2_unknown_unicast}}"
+    l3_unknown_multicast: "{{item.l3_unknown_multicast}}"
+    ipv6_l3_unknown_multicast: "{{item.ipv6_l3_unknown_multicast}}"
+    multi_dest: "{{item.multi_dest}}"
+    arp_flooding: "{{item.arp_flooding}}"
+    enable_routing: "{{item.enable_routing}}"
+    ip_learning: "{{item.ip_learning}}"
+    enable_multicast: "{{item.enable_multicast}}"
+    state: "{{item.state}}"
+  delegate_to: localhost
+  loop: "{{bridge_domains}}"
+  when: bridge_domains is defined

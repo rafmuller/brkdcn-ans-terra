@@ -1,0 +1,14 @@
+---
+# tasks file for roles/tn-epg
+- name: Create EPG (fv:AEPg)
+  cisco.aci.aci_epg:
+    tenant: "{{ item.tenant }}"
+    ap: "{{item.ap}}"
+    epg: "{{item.epg}}"
+    description: "{{item.description}}"
+    intra_epg_isolation: "{{item.intra_epg_isolation}}"
+    bd: "{{item.bd}}"
+    state: "{{item.state}}"
+  delegate_to: localhost
+  when: epgs is defined
+  loop: "{{epgs}}"
