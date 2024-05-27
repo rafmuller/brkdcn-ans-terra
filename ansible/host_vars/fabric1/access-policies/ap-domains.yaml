@@ -5,10 +5,12 @@ domains:
       domain_type: "l3dom",
       vlan_pool: "cl_ans_dmz",
       vlan_pool_allocation_mode: "static",
+      state: "present",
     }
   - {
       domain_name: "cl_ans_mgmt",
       domain_type: "phys",
       vlan_pool: "cl_ans_mgmt",
       vlan_pool_allocation_mode: "static",
+      state: "present",
     }

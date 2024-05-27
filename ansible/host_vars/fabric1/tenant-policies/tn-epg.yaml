@@ -1,0 +1,18 @@
+---
+epgs:
+  - {
+      tenant: "cl_ans_tenant1",
+      ap: "uc",
+      epg: "uc",
+      description: "(Ans) uc EPG",
+      intra_epg_isolation: "unenforced",
+      bd: "cl_ans_bd1",
+    }
+  - {
+      tenant: "cl_ans_tenant1",
+      ap: "dmz_untrust",
+      epg: "dmz_untrust",
+      description: "(Ans) dmz_untrust EPG",
+      intra_epg_isolation: "unenforced",
+      bd: "cl_ans_bd1",
+    }

@@ -10,6 +10,24 @@ vrfs:
       state: "present",
     }
   - {
+      tenant: "cl_ans_tenant1",
+      vrf_name: "cl_ans_dmz",
+      description: "(Ans)  Cisco Live Tenant 1 DMZ VRF",
+      policy_control_preference: "unenforced",
+      policy_control_direction: "ingress",
+      match_type: "at_least_one",
+      state: "present",
+    }
+  - {
+      tenant: "cl_ans_tenant2",
+      vrf_name: "cl_ans_core",
+      description: "(Ans) Cisco Live Tenant 2 Core VRF",
+      policy_control_preference: "unenforced",
+      policy_control_direction: "ingress",
+      match_type: "at_least_one",
+      state: "present",
+    }
+  - {
       tenant: "cl_ans_tenant2",
       vrf_name: "cl_ans_dmz",
       description: "(Ans)  Cisco Live Tenant 2 DMZ VRF",

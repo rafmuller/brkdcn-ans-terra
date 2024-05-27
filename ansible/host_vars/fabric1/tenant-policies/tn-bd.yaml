@@ -1,0 +1,70 @@
+---
+bridge_domains:
+  - {
+      tenant: "cl_ans_tenant1",
+      vrf: "cl_ans_core",
+      bd: "cl_ans_bd1",
+      description: "(Ans) Cisco Live bridge domain 1",
+      bd_type: "ethernet",
+      mac_address: "00:22:BD:F8:19:FF",
+      l2_unknown_unicast: "flood", # ["flood","proxy"]
+      l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      ipv6_l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      multi_dest: "bd-flood", # ["bd-flood", "drop", "encap-flood"]
+      arp_flooding: "yes", # ["yes","no"]
+      enable_routing: "yes", # ["yes","no"]
+      ip_learning: "yes", # ["yes","no"]
+      enable_multicast: "no", # ["yes","no"]
+      state: "present",
+    }
+  - {
+      tenant: "cl_ans_tenant1",
+      vrf: "cl_ans_dmz",
+      bd: "cl_ans_bd2",
+      description: "(Ans) Cisco Live bridge domain 2 ",
+      bd_type: "ethernet",
+      mac_address: "00:22:BD:F8:19:FF",
+      l2_unknown_unicast: "flood", # ["flood","proxy"]
+      l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      ipv6_l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      multi_dest: "bd-flood", # ["bd-flood", "drop", "encap-flood"]
+      arp_flooding: "yes", # ["yes","no"]
+      enable_routing: "yes", # ["yes","no"]
+      ip_learning: "yes", # ["yes","no"]
+      enable_multicast: "no", # ["yes","no"]
+      state: "present",
+    }
+  - {
+      tenant: "cl_ans_tenant2",
+      vrf: "cl_ans_core",
+      bd: "cl_ans_bd1",
+      description: "(Ans) Cisco Live bridge domain 1",
+      bd_type: "ethernet",
+      mac_address: "00:22:BD:F8:19:FF",
+      l2_unknown_unicast: "flood", # ["flood","proxy"]
+      l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      ipv6_l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      multi_dest: "bd-flood", # ["bd-flood", "drop", "encap-flood"]
+      arp_flooding: "yes", # ["yes","no"]
+      enable_routing: "yes", # ["yes","no"]
+      ip_learning: "yes", # ["yes","no"]
+      enable_multicast: "no", # ["yes","no"]
+      state: "present",
+    }
+  - {
+      tenant: "cl_ans_tenant2",
+      vrf: "cl_ans_dmz",
+      bd: "cl_ans_bd2",
+      description: "(Ans) Cisco Live bridge domain 2 ",
+      bd_type: "ethernet",
+      mac_address: "00:22:BD:F8:19:FF",
+      l2_unknown_unicast: "flood", # ["flood","proxy"]
+      l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      ipv6_l3_unknown_multicast: "flood", # ["flood","opt-flood"]
+      multi_dest: "bd-flood", # ["bd-flood", "drop", "encap-flood"]
+      arp_flooding: "yes", # ["yes","no"]
+      enable_routing: "yes", # ["yes","no"]
+      ip_learning: "yes", # ["yes","no"]
+      enable_multicast: "no", # ["yes","no"]
+      state: "present",
+    }

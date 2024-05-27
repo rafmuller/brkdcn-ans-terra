@@ -5,3 +5,8 @@ tenants:
       description: "(Ans) Cisco Live Tenant 1",
       state: "present",
     }
+  - {
+      tenant: "cl_ans_tenant2",
+      description: "(Ans) Cisco Live Tenant 2",
+      state: "present",
+    }

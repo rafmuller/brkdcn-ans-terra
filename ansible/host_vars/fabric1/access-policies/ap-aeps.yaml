@@ -6,6 +6,7 @@ aeps:
       aep_infra_vlan: false,
       domain_name: "cl_ans_aep_mgmt",
       domain_type: "phys",
+      state: "present",
     }
   - {
       aep_name: "cl_ans_aep_vm_rack1",
@@ -13,6 +14,7 @@ aeps:
       aep_infra_vlan: false,
       domain_name: "cl_ans_vm_rack1",
       domain_type: "phys",
+      state: "present",
     }
   - {
       aep_name: "cl_ans_aep_l3out",
@@ -20,4 +22,5 @@ aeps:
       aep_infra_vlan: false,
       domain_name: "cl_ans_l3out",
       domain_type: "l3dom",
+      state: "present",
     }
