@@ -1,6 +1,7 @@
 ---
-# tasks file for roles/tn-epg
-- name: Create EPG (fv:AEPg)
+# All tasks using Infra as Code
+
+- name: EPG via Infra as Code(fv:AEPg)
   cisco.aci.aci_epg:
     tenant: "{{ item.tenant }}"
     ap: "{{item.ap}}"
@@ -12,3 +13,39 @@
   delegate_to: localhost
   when: epgs is defined
   loop: "{{epgs}}"
+  tags:
+    - never
+    - iac
+# All tasks using Procedural
+
+- name: Create EPG via Procedural (fv:AEPg)
+  cisco.aci.aci_epg:
+    tenant: "{{ item.tenant }}"
+    ap: "{{item.ap}}"
+    epg: "{{item.epg}}"
+    description: "{{item.description}}"
+    intra_epg_isolation: "{{item.intra_epg_isolation}}"
+    bd: "{{item.bd}}"
+    state: present
+  delegate_to: localhost
+  when: epgs is defined
+  loop: "{{epgs}}"
+  tags:
+    - never
+    - create
+
+- name: Delete EPG via Procedural (fv:AEPg)
+  cisco.aci.aci_epg:
+    tenant: "{{ item.tenant }}"
+    ap: "{{item.ap}}"
+    epg: "{{item.epg}}"
+    description: "{{item.description}}"
+    intra_epg_isolation: "{{item.intra_epg_isolation}}"
+    bd: "{{item.bd}}"
+    state: absent
+  delegate_to: localhost
+  when: epgs is defined
+  loop: "{{epgs}}"
+  tags:
+    - never
+    - delete

@@ -7,6 +7,7 @@ epgs:
       description: "(Ans) uc EPG",
       intra_epg_isolation: "unenforced",
       bd: "cl_ans_bd1",
+      state: "present",
     }
   - {
       tenant: "cl_ans_tenant1",
@@ -15,4 +16,5 @@ epgs:
       description: "(Ans) dmz_untrust EPG",
       intra_epg_isolation: "unenforced",
       bd: "cl_ans_bd1",
+      state: "present",
     }

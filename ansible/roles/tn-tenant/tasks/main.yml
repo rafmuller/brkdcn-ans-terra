@@ -1,6 +1,7 @@
 ---
-# tasks file for roles/tn-tenant
-- name: Create tenant (fv:Tenant)
+# All tasks using Infra as Code
+
+- name: Tenant via Infra as Code (fv:Tenant)
   cisco.aci.aci_tenant:
     tenant: "{{item.tenant}}"
     description: "{{item.description}}"
@@ -8,3 +9,31 @@
   delegate_to: localhost
   when: tenants is defined
   loop: "{{tenants}}"
+  tags:
+    - never
+    - iac
+# All tasks using Procedural
+
+- name: Create Tenant via Procedural (fv:Tenant)
+  cisco.aci.aci_tenant:
+    tenant: "{{item.tenant}}"
+    description: "{{item.description}}"
+    state: present
+  delegate_to: localhost
+  when: tenants is defined
+  loop: "{{tenants}}"
+  tags:
+    - never
+    - create
+
+- name: Delete Tenant via Procedural (fv:Tenant)
+  cisco.aci.aci_tenant:
+    tenant: "{{item.tenant}}"
+    description: "{{item.description}}"
+    state: absent
+  delegate_to: localhost
+  when: tenants is defined
+  loop: "{{tenants}}"
+  tags:
+    - never
+    - delete

@@ -1,21 +1,26 @@
 ---
-- {
-    tenant: "cl_ans_tenant1",
-    ap: "cl_ans_ap_dmz",
-    description: "(Ans) DMZ Application Profile",
-  }
-- {
-    tenant: "cl_ans_tenant1",
-    ap: "cl_ans_ap_mgmt",
-    description: "(Ans) Mgmt Application Profile",
-  }
-- {
-    tenant: "cl_ans_tenant2",
-    ap: "cl_ans_ap_dmz",
-    description: "(Ans) DMZ Application Profile",
-  }
-- {
-    tenant: "cl_ans_tenant2",
-    ap: "cl_ans_ap_mgmt",
-    description: "(Ans) Mgmt Application Profile",
-  }
+app_profiles:
+  - {
+      tenant: "cl_ans_tenant1",
+      ap: "cl_ans_ap_dmz",
+      description: "(Ans) DMZ Application Profile",
+      state: "present",
+    }
+  - {
+      tenant: "cl_ans_tenant1",
+      ap: "cl_ans_ap_mgmt",
+      description: "(Ans) Mgmt Application Profile",
+      state: "present",
+    }
+  - {
+      tenant: "cl_ans_tenant2",
+      ap: "cl_ans_ap_dmz",
+      description: "(Ans) DMZ Application Profile",
+      state: "present",
+    }
+  - {
+      tenant: "cl_ans_tenant2",
+      ap: "cl_ans_ap_mgmt",
+      description: "(Ans) Mgmt Application Profile",
+      state: "present",
+    }

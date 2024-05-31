@@ -1,11 +1,12 @@
 ---
-subnets:
+bridge_domain_subnets:
   - {
       tenant: "cl_ans_tenant1",
       bd: "cl_ans_bd1",
-      subnet_name: "uc_core_178.215.135.1",
+      subnet_name: "cl_ans_10.1.101.0",
       gateway: "10.1.101.1",
       mask: "24",
       description: "(Ans) Cisco Live tenant 1 subnet for mgmt",
       scope: "public", # ["private","public","shared"]
+      state: "present",
     }

@@ -1,6 +1,6 @@
 ---
-# tasks file for roles/tn-ap
-- name: Create App Profile (fv:Ap)
+# All tasks using Infra as Code
+- name: App Profile via Infra as Code (fv:Ap)
   cisco.aci.aci_ap:
     tenant: "{{ item.tenant }}"
     ap: "{{item.ap}}"
@@ -9,3 +9,33 @@
   delegate_to: localhost
   when: app_profiles is defined
   loop: "{{app_profiles}}"
+  tags:
+    - never
+    - iac
+# All tasks using Procedural
+
+- name: Create App Profile via Procedural (fv:Ap)
+  cisco.aci.aci_ap:
+    tenant: "{{ item.tenant }}"
+    ap: "{{item.ap}}"
+    description: "{{item.description}}"
+    state: present
+  delegate_to: localhost
+  when: app_profiles is defined
+  loop: "{{app_profiles}}"
+  tags:
+    - never
+    - create
+
+- name: Delete App Profile via Procedural (fv:Ap)
+  cisco.aci.aci_ap:
+    tenant: "{{ item.tenant }}"
+    ap: "{{item.ap}}"
+    description: "{{item.description}}"
+    state: absent
+  delegate_to: localhost
+  when: app_profiles is defined
+  loop: "{{app_profiles}}"
+  tags:
+    - never
+    - delete

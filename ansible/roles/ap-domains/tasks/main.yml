@@ -1,2 +1,83 @@
 ---
 # tasks file for roles/ap-domains
+
+# All tasks using Infra as Code
+- name: Domain as Infra as Code (L2dom, L3dom,phys)
+  cisco.aci.aci_domain:
+    domain: "{{ item.domain_name }}"
+    domain_type: "{{ item.domain_type }}"
+    state: present
+  delegate_to: localhost
+  loop: "{{domains}}"
+  when: domains is defined
+  tags:
+    - never
+    - iac
+
+- name: Bind VLAN Pool to Domain as Infra as Code (infra:RsVlanNs)
+  cisco.aci.aci_domain_to_vlan_pool:
+    domain: "{{ item.domain_name }}"
+    domain_type: "{{ item.domain_type }}"
+    pool: "{{ item.vlan_pool}}"
+    pool_allocation_mode: "{{ item.vlan_pool_allocation_mode }}"
+    state: "{{item.state}}"
+  delegate_to: localhost
+  loop: "{{domains}}"
+  when: domains is defined
+  tags:
+    - never
+    - iac
+
+# All tasks using Procedural
+
+- name: Domain as Procedural (L2dom, L3dom,phys)
+  cisco.aci.aci_domain:
+    domain: "{{ item.domain_name }}"
+    domain_type: "{{ item.domain_type }}"
+    state: present
+  delegate_to: localhost
+  loop: "{{domains}}"
+  when: domains is defined
+  tags:
+    - never
+    - create
+
+- name: Bind VLAN Pool to Domain as Procedural (infra:RsVlanNs)
+  cisco.aci.aci_domain_to_vlan_pool:
+    domain: "{{ item.domain_name }}"
+    domain_type: "{{ item.domain_type }}"
+    pool: "{{ item.vlan_pool}}"
+    pool_allocation_mode: "{{ item.vlan_pool_allocation_mode }}"
+    state: present
+  delegate_to: localhost
+  loop: "{{domains}}"
+  when: domains is defined
+  tags:
+    - never
+    - create
+
+- name: Bind VLAN Pool to Domain (infra:RsVlanNs)
+  cisco.aci.aci_domain_to_vlan_pool:
+    domain: "{{ item.domain_name }}"
+    domain_type: "{{ item.domain_type }}"
+    pool: "{{ item.vlan_pool}}"
+    pool_allocation_mode: "{{ item.vlan_pool_allocation_mode }}"
+    state: present
+  delegate_to: localhost
+  loop: "{{domains}}"
+  when: domains is defined
+  tags:
+    - never
+    - create
+
+- name: Delete Domain (L2dom, L3dom, phys)
+  cisco.aci.aci_domain:
+    domain: "{{ item.domain_name }}"
+    domain_type: "{{ item.domain_type }}"
+    state: absent
+  delegate_to: localhost
+  loop: "{{domains}}"
+  when: domains is defined
+  tags:
+    - never
+    - delete

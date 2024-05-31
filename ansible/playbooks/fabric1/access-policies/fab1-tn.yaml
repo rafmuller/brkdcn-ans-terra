@@ -13,6 +13,9 @@
       use_ssl: yes
 
   roles:
-    - roles/ap-vlans
-    - roles/ap-domains
-    - roles/ap-aep
+    - roles/tn-tenant
+    - roles/tn-ap
+    - roles/tn-vrf
+    - roles/tn-bd
+    - roles/tn-ap
+    - roles/tn-epg

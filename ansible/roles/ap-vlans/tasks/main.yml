@@ -1,5 +1,6 @@
 ---
-- name: Create VLAN Pool
+# All tasks using Infra as Code
+- name: VLAN Pool via Infra as Code
   cisco.aci.aci_vlan_pool:
     pool: "{{item.vlan_pool_name}}"
     pool_allocation_mode: "{{item.vlan_pool_mode}}"
@@ -8,24 +9,76 @@
   delegate_to: localhost
   loop: "{{vlan_pools}}"
   when: vlan_pools is defined
+  tags:
+    - never
+    - iac
 
-- name: Delete Static VLAN Pool
-  cisco.aci.aci_vlan_pool:
-    pool: "{{item.vlan_pool_name}}"
-    pool_allocation_mode: "{{item.vlan_pool_mode}}"
-    description: "{{item.vlan_pool_description}}"
-    state: "{{item.state}}"
-  delegate_to: localhost
-  loop: "{{vlan_pools}}"
-  when: vlan_pools is defined
-
-- name: Create VLAN Pool Block
+- name: VLAN Pool Block via Infra as Code
   cisco.aci.aci_vlan_pool_encap_block:
     pool: "{{item.vlan_pool_name}}"
-    pool_allocation_mode: static
+    pool_allocation_mode: "{{item.vlan_pool_mode}}"
     block_start: "{{item.start}}"
     block_end: "{{item.end}}"
     state: "{{item.state}}"
   delegate_to: localhost
   loop: "{{vlan_block_ranges}}"
   when: vlan_block_ranges is defined
+  tags:
+    - never
+    - iac
+
+# All tasks using Procedural
+
+- name: Create VLAN Pool as Procedural
+  cisco.aci.aci_vlan_pool:
+    pool: "{{item.vlan_pool_name}}"
+    pool_allocation_mode: "{{item.vlan_pool_mode}}"
+    description: "{{item.vlan_pool_description}}"
+    state: present
+  delegate_to: localhost
+  loop: "{{vlan_pools}}"
+  when: vlan_pools is defined
+  tags:
+    - never
+    - create
+
+- name: Create VLAN Pool Block as Procedural
+  cisco.aci.aci_vlan_pool_encap_block:
+    pool: "{{item.vlan_pool_name}}"
+    pool_allocation_mode: static
+    block_start: "{{item.start}}"
+    block_end: "{{item.end}}"
+    state: present
+  delegate_to: localhost
+  loop: "{{vlan_block_ranges}}"
+  when: vlan_block_ranges is defined
+  tags:
+    - never
+    - create
+
+- name: Delete VLAN Pool Block as Procedural
+  cisco.aci.aci_vlan_pool_encap_block:
+    pool: "{{item.vlan_pool_name}}"
+    pool_allocation_mode: static
+    block_start: "{{item.start}}"
+    block_end: "{{item.end}}"
+    state: absent
+  delegate_to: localhost
+  loop: "{{vlan_block_ranges}}"
+  when: vlan_block_ranges is defined
+  tags:
+    - never
+    - delete
+
+- name: Delete Static VLAN Pool as Procedural
+  cisco.aci.aci_vlan_pool:
+    pool: "{{item.vlan_pool_name}}"
+    pool_allocation_mode: "{{item.vlan_pool_mode}}"
+    description: "{{item.vlan_pool_description}}"
+    state: absent
+  delegate_to: localhost
+  loop: "{{vlan_pools}}"
+  when: vlan_pools is defined
+  tags:
+    - never
+    - delete

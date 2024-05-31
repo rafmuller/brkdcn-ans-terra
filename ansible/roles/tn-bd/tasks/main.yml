@@ -1,6 +1,7 @@
 ---
-# tasks file for roles/tn-bd
-- name: Add Bridge Domain (fv:BD)
+# All tasks using Infra as Code
+
+- name: Bridge Domain via Infra as Code (fv:BD)
   cisco.aci.aci_bd:
     tenant: "{{ item.tenant }}"
     bd: "{{item.bd}}"
@@ -20,3 +21,106 @@
   delegate_to: localhost
   loop: "{{bridge_domains}}"
   when: bridge_domains is defined
+  tags:
+    - never
+    - iac
+
+- name: Bridge Domain Subnet via Infra as Code (fv:Subnet)
+  cisco.aci.aci_bd_subnet:
+    tenant: "{{ item.tenant }}"
+    bd: "{{item.bd}}"
+    subnet_name: "{{item.subnet_name}}"
+    gateway: "{{item.gateway}}"
+    mask: "{{item.mask}}"
+    description: "{{item.description}}"
+    scope: "{{item.scope}}"
+    state: "{{item.state}}"
+  delegate_to: localhost
+  loop: "{{bridge_domain_subnets}}"
+  when: bridge_domain_subnets is defined
+  tags:
+    - never
+    - iac
+# All tasks using Procedural
+
+- name: Create Bridge Domain via Procedural (fv:BD)
+  cisco.aci.aci_bd:
+    tenant: "{{ item.tenant }}"
+    bd: "{{item.bd}}"
+    bd_type: "{{item.bd_type}}"
+    description: "{{item.description}}"
+    mac_address: "{{item.mac_address}}"
+    vrf: "{{item.vrf}}"
+    l2_unknown_unicast: "{{item.l2_unknown_unicast}}"
+    l3_unknown_multicast: "{{item.l3_unknown_multicast}}"
+    ipv6_l3_unknown_multicast: "{{item.ipv6_l3_unknown_multicast}}"
+    multi_dest: "{{item.multi_dest}}"
+    arp_flooding: "{{item.arp_flooding}}"
+    enable_routing: "{{item.enable_routing}}"
+    ip_learning: "{{item.ip_learning}}"
+    enable_multicast: "{{item.enable_multicast}}"
+    state: present
+  delegate_to: localhost
+  loop: "{{bridge_domains}}"
+  when: bridge_domains is defined
+  tags:
+    - never
+    - create
+
+- name: Create Bridge Domain Subnet via Procedural (fv:Subnet)
+  cisco.aci.aci_bd_subnet:
+    tenant: "{{ item.tenant }}"
+    bd: "{{item.bd}}"
+    subnet_name: "{{item.subnet_name}}"
+    gateway: "{{item.gateway}}"
+    mask: "{{item.mask}}"
+    description: "{{item.description}}"
+    scope: "{{item.scope}}"
+    state: present
+  delegate_to: localhost
+  loop: "{{bridge_domain_subnets}}"
+  when: bridge_domain_subnets is defined
+  tags:
+    - never
+    - create
+
+- name: Delete Bridge Domain Subnet via Procedural (fv:Subnet)
+  cisco.aci.aci_bd_subnet:
+    tenant: "{{ item.tenant }}"
+    bd: "{{item.bd}}"
+    subnet_name: "{{item.subnet_name}}"
+    gateway: "{{item.gateway}}"
+    mask: "{{item.mask}}"
+    description: "{{item.description}}"
+    scope: "{{item.scope}}"
+    state: absent
+  delegate_to: localhost
+  loop: "{{bridge_domain_subnets}}"
+  when: bridge_domain_subnets is defined
+  tags:
+    - never
+    - delete
+
+- name: Delete Bridge Domain via Procedural (fv:BD)
+  cisco.aci.aci_bd:
+    tenant: "{{ item.tenant }}"
+    bd: "{{item.bd}}"
+    bd_type: "{{item.bd_type}}"
+    description: "{{item.description}}"
+    mac_address: "{{item.mac_address}}"
+    vrf: "{{item.vrf}}"
+    l2_unknown_unicast: "{{item.l2_unknown_unicast}}"
+    l3_unknown_multicast: "{{item.l3_unknown_multicast}}"
+    ipv6_l3_unknown_multicast: "{{item.ipv6_l3_unknown_multicast}}"
+    multi_dest: "{{item.multi_dest}}"
+    arp_flooding: "{{item.arp_flooding}}"
+    enable_routing: "{{item.enable_routing}}"
+    ip_learning: "{{item.ip_learning}}"
+    enable_multicast: "{{item.enable_multicast}}"
+    state: absent
+  delegate_to: localhost
+  loop: "{{bridge_domains}}"
+  when: bridge_domains is defined
+  tags:
+    - never
+    - delete
