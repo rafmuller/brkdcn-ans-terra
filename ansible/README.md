@@ -18,15 +18,24 @@ pyenv install 3.10
 
 To create a virtual environment for the project run:
 
+The virtual environment created will be named cisco-
+
 ```bash
-pyenv virtualenv 3.10 cisco-live
+pyenv virtualenv 3.10 <virtualenv-name>
 ```
 
 Then on the root directory for the ansible repository run:
 
 ```bash
-pyenv local cisco-live
+pyenv local <virtualenv-name>
 ```
+
+This will create a .python-version file in the root directory of the repository that will set the python version to be used for the repository when changing to the directory. If this is not working you can also activate the virtual environment by running:
+
+```bash
+pyenv activate <virtualenv-name>
+```
+
 
 ## Step 3:  Install ansible and other dependencies
 
@@ -44,20 +53,21 @@ ansible-galaxy collection install ansible.posix
 ansible-galaxy collection install community.general
 ```
 
-<!-- ## Step 4: Setup ansible.cfg
+## Step 3.5: Configure ansible.cfg
 
-To avoid problems on what python interpreter to use, create an ansible.cfg file on the root directory of the repository with the following content:
+To avoid potential problems on what python interpreter to use, create an ansible.cfg file on the root directory of the repository with the following content:
 
 ```ini
 [defaults]
-collections_path = /path/to/homedir/.ansible/collections/ansible_collections
 ansible_python_interpreter=
 
 callback_whitelist=ansible.posix.timer,ansible.posix.profile_tasks,ansible.posix.profile_roles
 callbacks_enabled=ansible.posix.timer,ansible.posix.profile_tasks,ansible.posix.profile_roles
 stdout_callback = community.general.yaml
 bin_ansible_callbacks = True
-``` -->
+```
+
+To determine the `ansible_python_interpreter` path you should run the command `which python` and use the output of that command as the value for the `ansible_python_interpreter` variable. This will ensure that the correct python interpreter is used when running the playbooks.
 
 ## Step 4 - Clone this git repository
 
