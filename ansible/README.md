@@ -36,7 +36,6 @@ This will create a .python-version file in the root directory of the repository 
 pyenv activate <virtualenv-name>
 ```
 
-
 ## Step 3:  Install ansible and other dependencies
 
 To install ansible:
@@ -67,13 +66,13 @@ stdout_callback = community.general.yaml
 bin_ansible_callbacks = True
 ```
 
-To determine the `ansible_python_interpreter` path you should run the command `which python` and use the output of that command as the value for the `ansible_python_interpreter` variable. This will ensure that the correct python interpreter is used when running the playbooks.
+To determine the `ansible_python_interpreter` path you should run the command `which python` while the virtual environment is active. Then use the output of that command as the value for the `ansible_python_interpreter` variable. This will ensure that the correct python interpreter is used when running the playbooks.
 
 ## Step 4 - Clone this git repository
 
 You will need to have Git installed on your system. If you don't have it installed, you can download it from [here](https://git-scm.com/downloads). To clone the repository, run the following command:
 
-```bash 
+```bash
 git clone https://github.com/rafmuller/brkdcn-ans-terra.git
 ```
 
@@ -119,4 +118,3 @@ Or if you wish to delete then:
 ```bash
 ansible-playbook -i fabric1.yaml playbooks/fabric1/access-policies/fab1-ap.yaml --tags delete
 ```
-
