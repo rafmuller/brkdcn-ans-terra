@@ -95,7 +95,7 @@ export APIC_PASSWORD=your_password
 
 This repository is designed with two modes of operation. One is to treat the repository as infrastructure as code, where the source of truth resides in the repository data structures. In this mode you operate all changes from ansible towards the ACI fabric. The second method is procedural, where you use the repository as a way to perform transactional changes to the ACI fabric.
 
-We have provided you with a base set of playbooks that you can modify as your needs require. The playbooks are located in the playbooks directory. The playbooks are structured around the fabrics. This is due to past experience that finds is easier to manage. 
+We have provided you with a base set of playbooks that you can modify as your needs require. The playbooks are located in the playbooks directory. The playbooks are structured around the fabrics. This is due to past experience that finds is easier to manage.
 
 ### Infrastructure as code mode
 
@@ -107,7 +107,7 @@ ansible-playbook -i fabric1.yaml playbooks/fabric1/access-policies/fab1-ap.yaml 
 
 ### Procedural mode
 
-In procedural mode the playbooks are designed to either create or delete whatever you are requesting. So in this case if you create various obhects with a single change in the tags you could delete what you just created. The difference between iac mode and procedural is that the state of the objects ( present or absent ) is defined in the specific task based no the tags. 
+In procedural mode the playbooks are designed to either create or delete whatever you are requesting. So in this case if you create various obhects with a single change in the tags you could delete what you just created. The difference between iac mode and procedural is that the state of the objects ( present or absent ) is defined in the specific task based no the tags.
 
 ```bash
 ansible-playbook -i fabric1.yaml playbooks/fabric1/access-policies/fab1-ap.yaml --tags create
