@@ -2,18 +2,18 @@
 epgs:
   - {
       tenant: "cl_ans_tenant1",
-      ap: "uc",
-      epg: "uc",
-      description: "(Ans) uc EPG",
+      ap: "cl_ans_ap_dmz",
+      epg: "cl_ans_epg_one",
+      description: "(Ans) Cisco Live EPG #1",
       intra_epg_isolation: "unenforced",
       bd: "cl_ans_bd1",
       state: "present",
     }
   - {
       tenant: "cl_ans_tenant1",
-      ap: "dmz_untrust",
-      epg: "dmz_untrust",
-      description: "(Ans) dmz_untrust EPG",
+      ap: "cl_ans_ap_dmz",
+      epg: "cl_ans_epg_two",
+      description: "(Ans) Cisco Live EPG #2",
       intra_epg_isolation: "unenforced",
       bd: "cl_ans_bd1",
       state: "present",
