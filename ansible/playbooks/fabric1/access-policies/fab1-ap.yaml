@@ -9,8 +9,8 @@
       hostname: "{{ ansible_host }}"
       username: "{{ username }}"
       password: "{{ password }}"
-      validate_certs: no
-      use_ssl: yes
+      validate_certs: false
+      use_ssl: true
 
   roles:
     - roles/ap-vlans
