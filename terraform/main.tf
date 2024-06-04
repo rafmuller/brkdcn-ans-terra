@@ -15,15 +15,11 @@ terraform {
   }
 }
 
-/* Provider configuration with signature-based authentication. */
+/* Provider configuration with Username/password authentication. */
 provider "aci" {
   # cisco-aci user name (local User)
   username = "admin"
-  # cisco-aci signature based cert
-  #password = "C1sc0TTG"
-  password = "C1sc0TTG!"
-  #private_key = "tfcert.key"
-  #cert_name   = "tfcert.crt"
+  password = "cisco123!"
   # cisco-aci url
   url      = "https://172.31.1.200/"
   insecure = true
